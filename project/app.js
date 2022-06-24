@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose')
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,8 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
  * Database
  *
  ***********************************************/
-const useDatabase = true
+const useDatabase = false
 if (useDatabase == true) {
+  var mongoose = require('mongoose')
   const mongoDBConnection = "mongodb://localhost:27017/some_test"
   mongoose.connect(mongoDBConnection)
   var db = mongoose.connection
